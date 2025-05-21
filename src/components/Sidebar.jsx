@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { Logo } from "../assets";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { MdDashboard } from "react-icons/md";
@@ -10,10 +10,10 @@ const Sidebar = () => {
   return (
     <div className="w-full flex items-center justify-center flex-col">
       <div className=" w-full  border-b border-[#1E3A8A] py-5 ">
-        <div className="w-[80%] mx-auto flex items-center gap-x-2">
+        <Link to="/" className="w-[80%] mx-auto flex items-center gap-x-2">
           <img src={Logo} alt="logo" className="w-[30px]" />
           <h2 className="text-xl font-semibold">Guardwallet</h2>
-        </div>
+        </Link>
       </div>
       <div className="w-[90%] mx-auto flex items-center flex-col mt-14">
         <NavLink

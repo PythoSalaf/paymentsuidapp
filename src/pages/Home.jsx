@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { AI, Cloud, Hero, Logo, Multi, Send, Smart } from "../assets";
+import { AI, Circle, Cloud, Hero, Logo, Multi, Send, Smart } from "../assets";
 import { Navbar, WalletModal } from "../components";
 import { IoWalletOutline } from "react-icons/io5";
 import { useState } from "react";
@@ -42,7 +42,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="w-full relative h-screen text-white bg-[#060C1C]  flex items-start justify-center">
+    <div className="w-full relative h-full text-white bg-[#060C1C]  flex items-start justify-center">
       <div className="absolute inset-0  flex items-start justify-center  ">
         <div className="w-[450px] h-[450px] bg-[#550DC5] blur-[400px] opacity-40"></div>
       </div>
@@ -80,11 +80,11 @@ const Home = () => {
             <img
               src={Hero}
               alt="hero"
-              className="w-[90%] md:w-[80%] mx-auto animate-scale"
+              className="w-[96%] md:w-[85%] lg:w-[80%] mx-auto animate-scale"
             />
           </div>
         </div>
-        <section className="w-full relative h-[100%]  pb-7 pt-16 bg-[#060C1C] flex items-start ">
+        <section className="w-full relative h-[100%] -mt-5 md:-mt-0 pb-7 pt-16 md:pt-14 bg-[#060C1C] flex items-start ">
           <div className="absolute left-0 inset-0 flex items-end justify-start ">
             <div className="bg-[#550DC5] blur-[380px] opacity-40 w-[300px] h-[300px]"></div>
           </div>
@@ -92,7 +92,7 @@ const Home = () => {
             <h2 className="text-center text-2xl md:text-3xl lg:text-4xl">
               Key Features
             </h2>
-            <div className="pt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-[95%] gap-9 md:gap-7 md:w-[92%] mx-auto">
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-[95%] gap-9 md:gap-7 md:w-[92%] mx-auto">
               {features.map((item) => (
                 <div
                   className="relative bg-[#B4BDD833]  w-[89%] mx-auto md:w-full py-16 md:py-20  rounded-xl flex items-center justify-center "
@@ -115,12 +115,18 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-20">
+            <div className="mt-9 md:mt-20">
               <h2 className="text-center text-2xl md:text-3xl lg:text-4xl">
                 How it Works
               </h2>
-              <div className="pt-16"></div>
-              <div className="pt-14 w-full">
+              <div className="pt-16 flex items-center justify-center w-full">
+                <img
+                  src={Circle}
+                  alt=""
+                  className="-mt-5 w-[80%] md:w-[55%] lg:w-[43%]"
+                />
+              </div>
+              <div className="pt-20 w-full">
                 <div className="bg-[#B4BDD833] py-6 flex flex-col items-center justify-center rounded-xl w-[90%] md:w-[70%] mx-auto">
                   <h3 className="capitalize text-lg md:text-xl lg:text-2xl font-semibold">
                     Send smart & stay safe.

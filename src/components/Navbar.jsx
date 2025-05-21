@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { Logo } from "../assets";
 import { IoWalletOutline } from "react-icons/io5";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdClose } from "react-icons/md";
 import WalletModal from "./WalletModal";
 const Navbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [toggle, setToggle] = useState(false);
   return (
     <div className="w-full  py-3 z-50 bg-[#060C1C]  shadow">
       <div className="w-[96%] md:w-[92%] mx-auto flex items-center justify-between">
@@ -15,7 +16,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center gap-9">
           <NavLink>Home</NavLink>
-          <NavLink>About us</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
           <NavLink>Our Services</NavLink>
           <NavLink>Contact us</NavLink>
         </div>
@@ -28,9 +29,29 @@ const Navbar = () => {
             Connect Wallet
           </button>
         </div>
-        <div className="block md:hidden cursor-pointer">
-          <MdMenu className="size-8" />
+        <div
+          className="block md:hidden cursor-pointer"
+          onClick={() => setToggle(!toggle)}
+        >
+          {toggle ? (
+            <MdClose className="size-8" />
+          ) : (
+            <MdMenu className="size-8" />
+          )}
         </div>
+        {toggle && (
+          <div className="absolute top-14 right-0 z-40 shadow-2xl rounded-l-2xl w-[50%] bg-[#0F1D45] py-5 ">
+            <div className="w-[75%] mx-auto flex flex-col ">
+              <Link to="/" className="mb-3">
+                Home
+              </Link>
+              <Link to="/dashboard" className="mb-3">
+                Dashboard
+              </Link>
+              <Link className="mb-3">Transactions</Link>
+            </div>
+          </div>
+        )}
       </div>
       <WalletModal modalOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>

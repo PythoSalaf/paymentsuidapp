@@ -13,6 +13,7 @@ import Btc from "./bitcoin.svg";
 import Eth from "./eth.svg";
 import USDC from "./usdc.svg";
 import SUI from "./sui.svg";
+import Circle from "./Circle.svg";
 
 export {
   Logo,
@@ -30,4 +31,5 @@ export {
   Eth,
   USDC,
   SUI,
+  Circle,
 };
