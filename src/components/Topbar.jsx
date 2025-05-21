@@ -24,6 +24,9 @@ const Topbar = () => {
             <Link to="/" className="mb-3">
               Home
             </Link>
+            <Link to="/send-asset" className="mb-3">
+              Send Asset
+            </Link>
             <Link to="/dashboard" className="mb-3">
               Dashboard
             </Link>
