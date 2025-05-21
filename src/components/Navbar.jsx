@@ -40,15 +40,28 @@ const Navbar = () => {
           )}
         </div>
         {toggle && (
-          <div className="absolute top-14 right-0 z-40 shadow-2xl rounded-l-2xl w-[50%] bg-[#0F1D45] py-5 ">
-            <div className="w-[75%] mx-auto flex flex-col ">
-              <Link to="/" className="mb-3">
+          <div className="absolute top-14 right-0 z-40 shadow-2xl rounded-b-2xl w-full bg-[#0F1D45] py-8 ">
+            <div className="w-[85%] mx-auto flex flex-col items-center justify-center">
+              <Link to="/" className="mb-3" onClick={() => setToggle(!toggle)}>
                 Home
               </Link>
-              <Link to="/dashboard" className="mb-3">
+              <Link
+                to="/dashboard"
+                className="mb-3"
+                onClick={() => setToggle(!toggle)}
+              >
                 Dashboard
               </Link>
-              <Link className="mb-3">Transactions</Link>
+              <Link
+                to="/send-asset"
+                className="mb-3"
+                onClick={() => setToggle(!toggle)}
+              >
+                Send Asset
+              </Link>
+              <button className="bg-[#0A132E] text-sm px-3 rounded-lg py-1.5 mt-6">
+                Connect Wallet
+              </button>
             </div>
           </div>
         )}
