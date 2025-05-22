@@ -1,16 +1,25 @@
+/*
+/// Module: protectedpay
+module protectedpay::protectedpay;
+*/
+
+// For Move coding conventions, see
+// https://docs.sui.io/concepts/sui-move-concepts/conventions
+
+
 module protectedpay::secure_payment {
-    use sui::object::{Self, UID, ID};
+    //use sui::object::{Self, UID, ID};
     use sui::coin::{Self, Coin};
-    use sui::transfer;
-    use sui::tx_context::{Self, TxContext};
+    //use sui::transfer;
+    //use sui::tx_context::{Self, TxContext};
     use sui::clock::{Self, Clock};
-    use sui::balance::{Self, Balance};
+    use sui::balance::Balance;
     use sui::event;
     use sui::dynamic_field as df;
     use sui::table::{Self, Table};
     use std::string::{Self, String};
-    use std::vector;
-    use std::option::{Self, Option};
+    //use std::vector;
+    //use std::option::{Self, Option};
 
     // ============== Error Constants ==============
     const ERROR_UNAUTHORIZED: u64 = 1;
@@ -20,7 +29,7 @@ module protectedpay::secure_payment {
     const ERROR_NOT_RECIPIENT: u64 = 5;
     const ERROR_USERNAME_NOT_FOUND: u64 = 6;
     const ERROR_USERNAME_TAKEN: u64 = 7;
-    const ERROR_INSUFFICIENT_FUNDS: u64 = 8;
+    //const ERROR_INSUFFICIENT_FUNDS: u64 = 8;
     const ERROR_INVALID_AMOUNT: u64 = 9;
 
     // ============== Status Constants ==============
@@ -30,7 +39,7 @@ module protectedpay::secure_payment {
     const STATUS_EXPIRED: u8 = 3;
 
     // ============== Events ==============
-    struct TransferCreated has copy, drop {
+    public struct TransferCreated has copy, drop {
         transfer_id: ID,
         sender: address,
         recipient: address,
@@ -39,19 +48,19 @@ module protectedpay::secure_payment {
         memo: String,
     }
 
-    struct TransferClaimed has copy, drop {
+    public struct TransferClaimed has copy, drop {
         transfer_id: ID,
         claimer: address,
         amount: u64,
     }
 
-    struct TransferCancelled has copy, drop {
+    public struct TransferCancelled has copy, drop {
         transfer_id: ID,
         sender: address,
         amount: u64,
     }
 
-    struct UsernameRegistered has copy, drop {
+    public struct UsernameRegistered has copy, drop {
         username: String,
         owner: address,
     }
@@ -59,12 +68,12 @@ module protectedpay::secure_payment {
     // ============== Structs ==============
     
     // Admin capability for system management
-    struct AdminCap has key, store {
+    public struct AdminCap has key, store {
         id: UID,
     }
 
     // Username registry for user-friendly transfers
-    struct UsernameRegistry has key {
+   public  struct UsernameRegistry has key {
         id: UID,
         usernames: Table<String, address>,
         addresses: Table<address, String>,
@@ -72,7 +81,7 @@ module protectedpay::secure_payment {
     }
 
     // Main protected transfer object
-    struct ProtectedTransfer<phantom T> has key, store {
+    public struct ProtectedTransfer<phantom T> has key, store {
         id: UID,
         sender: address,
         recipient: address,
@@ -85,7 +94,7 @@ module protectedpay::secure_payment {
     }
 
     // Transfer receipt for tracking
-    struct TransferReceipt has key, store {
+    public struct TransferReceipt has key, store {
         id: UID,
         transfer_id: ID,
         sender: address,
@@ -95,7 +104,7 @@ module protectedpay::secure_payment {
     }
 
     // Global statistics object
-    struct GlobalStats has key {
+   public  struct GlobalStats has key {
         id: UID,
         total_transfers: u64,
         total_volume: u64,
@@ -142,7 +151,7 @@ module protectedpay::secure_payment {
         let sender = tx_context::sender(ctx);
         
         // Validate username length (3-20 characters)
-        let username_bytes = string::bytes(&username);
+        let username_bytes = string::as_bytes(&username);
         assert!(vector::length(username_bytes) >= 3 && vector::length(username_bytes) <= 20, ERROR_INVALID_STATE);
         
         // Ensure username is not taken
@@ -203,7 +212,7 @@ module protectedpay::secure_payment {
         let expiry_timestamp = current_time + (expiry_hours * 3600000); // Convert hours to milliseconds
         
         // Create transfer object
-        let transfer_obj = ProtectedTransfer<T> {
+        let  mut transfer_obj = ProtectedTransfer<T> {
             id: object::new(ctx),
             sender,
             recipient,
@@ -444,3 +453,4 @@ module protectedpay::secure_payment {
         init(ctx);
     }
 }
+

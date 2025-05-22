@@ -1,3 +1,21 @@
+/*
+#[test_only]
+module protectedpay::protectedpay_tests;
+// uncomment this line to import the module
+// use protectedpay::protectedpay;
+
+const ENotImplemented: u64 = 0;
+
+#[test]
+fun test_protectedpay() {
+    // pass
+}
+
+#[test, expected_failure(abort_code = ::protectedpay::protectedpay_tests::ENotImplemented)]
+fun test_protectedpay_fail() {
+    abort ENotImplemented
+}
+*/
 #[test_only]
 module protectedpay::secure_payment_tests {
     use sui::test_scenario::{Self as ts, Scenario};
