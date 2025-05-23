@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import { AI, Circle, Cloud, Hero, Logo, Multi, Send, Smart } from "../assets";
 import { Navbar, WalletModal } from "../components";
 import { IoWalletOutline } from "react-icons/io5";
-import { useState } from "react";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const features = [
     {
       id: 1,

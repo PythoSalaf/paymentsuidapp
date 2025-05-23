@@ -14,6 +14,10 @@ import Eth from "./eth.svg";
 import USDC from "./usdc.svg";
 import SUI from "./sui.svg";
 import Circle from "./Circle.svg";
+import Warning from "./warning.svg";
+import Success from "./success.svg";
+import Pending from "./pending.svg";
+import Fail from "./fail.svg";
 
 export {
   Logo,
@@ -32,4 +36,8 @@ export {
   USDC,
   SUI,
   Circle,
+  Warning,
+  Success,
+  Pending,
+  Fail,
 };

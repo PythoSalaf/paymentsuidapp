@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router";
+import { Toaster } from "react-hot-toast";
 import {
   Dashboard,
   DashboardLayout,
@@ -11,6 +12,7 @@ import {
 function App() {
   return (
     <div>
+      <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<LandingLayout />}>
           <Route index element={<Home />} />
